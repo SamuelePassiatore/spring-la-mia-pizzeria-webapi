@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="ISO-8859-1">
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	
+	<link rel="stylesheet" th:href="@{/webjars/bootstrap/5.2.3/css/bootstrap.min.css}"/>
+	<title>Crea ingrediente</title>
+</head>
+<body th:object="${ingredient}" class="p-4">
+	<h1>Crea un ingrediente: </h1>
+	<form th:action="@{/admin/ingredients/store}" method="POST">
+				<div>
+					<label for="name">Nome</label>
+					<input id="name" type="text" name="name">
+					<label 
+						style="color: red"
+						th:if="${errors != null && errors.hasFieldErrors('name')}"
+					>
+					[[ ${errors.getFieldError('name').defaultMessage} ]]
+					</label>
+				</div>
+				<button class="btn btn-small btn-primary">Crea</button>
+			</form>
+</body>
+</html>

@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>org.springframework.boot</groupId>
+		<artifactId>spring-boot-starter-parent</artifactId>
+		<version>3.1.0</version>
+		<relativePath/> <!-- lookup parent from repository -->
+	</parent>
+	<groupId>org.example</groupId>
+	<artifactId>Step-1-Creare-un-nuovo-progetto-Spring-Boot-MVC-Thymeleaf-Nel-progetto-aggiungere-un-controller-che-risponde-alla-root-dell-applicazione-con-un-metodo-che-restituisce-una-view-fatta-con-Thymeleaf-in-cui-viene-stampato-un-titolo-Best-of-the-year-by...al-posto-dei-puntini-deve-apparire-il-vostro-nome-passato-come-attributo-dal-controller-attraverso-il-model.Step-2-Creare-all-interno-del-controller-due-metodi-privati-uno-restituisce-una-List-Movie-getBestMovies-l-altro-restituisce-una-List-Song-getBestSongs-Creare-le-classi-Movie-e-Song-aventi-almeno-id-titolo-Aggiungere-al-controller-altri-due-metodi-che-rispondono-agli-url-movies-songs-In-ognuno-di-questi-metodi-aggiungere-al-model-un-attributo-stringa-con-una-lista-di-titoli-di-migliori-film-o-canzoni-in-base-al-metodo-che-stiamo-implementando-separati-da-virgole.Utilizzare-i-due-metodi-getBest...per-recuperare-i-film-e-le-canzoni.Creare-i-rispettivi-template-Thymeleaf.Creare-due-metodi-movies-id-songs-id-che-dato-il-parametro-id-passato-tramite-il-path-mostri-in-pagina-il-titolo-relativo-al-film-canzone.Testare-chiamando-dal-browser-i-diversi-url.</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+	<name>spring-la-mia-pizzeria-crud</name>
+	<description>Demo project for Spring Boot</description>
+	<properties>
+		<java.version>17</java.version>
+	</properties>
+	<dependencies>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-test</artifactId>
+			<scope>test</scope>
+		</dependency>
+		
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-web</artifactId>
+		</dependency>
+
+		<dependency> 
+			<groupId>org.springframework.boot</groupId> 
+			<artifactId>spring-boot-starter-thymeleaf</artifactId> 
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-data-jpa</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>mysql</groupId>
+			<artifactId>mysql-connector-java</artifactId>
+			<version>8.0.33</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.java.query</groupId>
+			<artifactId>org.java.query.sql</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+		</dependency>
+		
+		<!-- SECURITY -->
+		<dependency>
+		  <groupId>org.springframework.boot</groupId>
+		  <artifactId>spring-boot-starter-security</artifactId>
+		</dependency>
+		<dependency>
+		  	<groupId>org.thymeleaf.extras</groupId>
+		  	<artifactId>thymeleaf-extras-springsecurity6</artifactId>
+		</dependency>
+		
+		<dependency>
+    		<groupId>org.webjars</groupId>
+    		<artifactId>bootstrap</artifactId>
+    		<version>5.2.3</version>
+		</dependency>
+		
+		<!-- VALIDATION -->
+		<dependency> 
+		    <groupId>org.springframework.boot</groupId> 
+		    <artifactId>spring-boot-starter-validation</artifactId> 
+		</dependency>
+
+	</dependencies>
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-maven-plugin</artifactId>
+			</plugin>
+		</plugins>
+	</build>
+
+</project>

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+
+<!-- Required meta tags -->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+<link rel="stylesheet" th:href="@{/webjars/bootstrap/5.2.3/css/bootstrap.min.css}"/>
+<title>Pizza</title>
+</head>
+<body class="p-2 text-center" th:object="${pizza}">
+	<div class="pb-5">
+		<a class="nav-link active text-danger text-center pb-5" th:href="@{/pizze}">Torna alle nostre pizze!</a>
+		<h1>[[ *{nome} ]]</h1>
+		<h5>[[ *{descrizione} ]]</h5>
+		<h5 th:text="${pizza.formattedPrezzo}"></h5>
+		<img style="height: 100px;" th:alt="*{nome}" th:src="*{foto}">
+	</div>
+	<a class="btn btn-small btn-success mt-5" th:href="@{/admin/pizze/{pizzaId}/special-offer/create (pizzaId = *{id})}" sec:authorize="hasAuthority('ADMIN')">Crea una nuova offerta speciale</a>
+	<div class="pt-5">
+		<h3>Offerte speciali: </h3>
+		<div th:each="specialOffer : ${pizza.specialOffers}" th:object="${specialOffer}" class="pb-4">
+			<h6>[[ *{title} ]] - Sconto: [[ *{discountPercentage}]] %</h6>
+			<div>Data inizio sconto: [[ *{startDate} ]]</div>
+			<div>Data fine sconto: [[ *{endDate} ]]</div>
+			<div>Prezzo scontato: [[*{discountedPrice}]]€</div>
+			<a class="btn btn-small btn-warning mt-2" th:href="@{/admin/pizze/{pizzaId}/special-offer/edit/{id} (pizzaId = ${pizza.id}, id=*{id})}" sec:authorize="hasAuthority('ADMIN')">Modifica</a>
+		</div>			
+	</div>
+</body>
+</html> 

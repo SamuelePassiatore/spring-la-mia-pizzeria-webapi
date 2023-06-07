@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="ISO-8859-1">
+
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="stylesheet" th:href="@{/webjars/bootstrap/5.2.3/css/bootstrap.min.css}"/>
+    <title>Le nostre pizze</title>
+</head>
+<body class="p-2 text-center">
+    <a class="nav-link active text-danger text-center pb-5" th:href="@{/}">Torna alla home!</a>
+    <h1 class="pb-3">Le nostre pizze</h1>
+    <form th:action="@{/pizze/nome}" method="POST" class="pb-5">
+		<input type="text" name="nome" th:value="${nome}">
+		<input class="btn btn-small btn-primary" type="submit" value="Cerca una pizza">
+	</form>
+    <ul class="list-group">
+        <li class="list-group-item d-flex justify-content-center"
+            th:each="pizza : ${pizze}"
+            th:object="${pizza}"
+        >
+            <a class="pe-5 d-flex align-items-center" th:href="@{/pizze/{id} (id=*{id})}">
+                [[*{nome}]]
+            </a>
+            <div class="ps-5">
+	           	<a class="pe-3 btn btn-small btn-danger" th:href="@{/pizze/delete/{id} (id=*{id})}">
+					Elimina
+				</a>
+				<a class="btn btn-small btn-warning" th:href="@{/pizze/edit/{id} (id=*{id})}">
+					Modifica
+				</a>
+				<a class="btn btn-small btn-secondary" th:href="@{/pizze/soft-delete/{id} (id=*{id})}">
+					Soft delete
+				</a>
+            </div>
+        </li>
+        <li class="list-group-item text-muted" th:if="${pizze.isEmpty()}">
+            Non ci sono pizze disponibili al momento.
+        </li>
+    </ul>
+    <a class="btn btn-small btn-success mt-5" th:href="@{/pizze/create}">Crea una nuova pizza</a>
+</body>
+</html>
