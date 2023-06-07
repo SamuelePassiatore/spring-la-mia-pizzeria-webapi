@@ -2,6 +2,8 @@ package org.example.pizzeria.pojo;
 
 import java.time.LocalDate;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -37,6 +39,7 @@ public class SpecialOffer {
 	@Max(value = 100, message = "Lo sconto deve essere compreso tra 1 e 100")
     private int discountPercentage;
     
+    @JsonBackReference
     @ManyToOne
 	@JoinColumn(nullable = false)
 	private Pizza pizza;

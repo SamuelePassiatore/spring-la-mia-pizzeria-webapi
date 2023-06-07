@@ -3,6 +3,9 @@ package org.example.pizzeria.pojo;
 import java.util.Arrays;
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -32,9 +35,11 @@ public class Pizza {
     
     private boolean deleted = false;
     
+    @JsonManagedReference
     @OneToMany(mappedBy = "pizza")
 	private List<SpecialOffer> specialOffers;
     
+    @JsonManagedReference
 	@ManyToMany
 	private List<Ingredient> ingredients;
     
@@ -106,6 +111,8 @@ public class Pizza {
 	public List<Ingredient> getIngredients() {
 		return ingredients;
 	}
+	
+	@JsonIgnore
 	public void setIngredients(List<Ingredient> ingredients) {
 		this.ingredients = ingredients;
 	}
