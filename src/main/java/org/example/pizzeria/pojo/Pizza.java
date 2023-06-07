@@ -39,7 +39,7 @@ public class Pizza {
     @OneToMany(mappedBy = "pizza")
 	private List<SpecialOffer> specialOffers;
     
-    @JsonManagedReference
+    @JsonIgnore
 	@ManyToMany
 	private List<Ingredient> ingredients;
     

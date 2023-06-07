@@ -62,17 +62,17 @@ public class ApiController {
 	    
 	    @PostMapping("/pizze/store")
 	    public ResponseEntity<Pizza> storePizza(@RequestBody Pizza pizza) {
-	        pizza = pizzaService.save(pizza);
+	        Pizza pizzaCreated = pizzaService.save(pizza);
 	        
-	        return new ResponseEntity<>(pizza, HttpStatus.OK);
+	        return new ResponseEntity<>(pizzaCreated, HttpStatus.OK);
 	    }
 	    
 	    @PutMapping("/pizze/update")
 		public ResponseEntity<Pizza> updatePizza(@RequestBody Pizza pizza) {
 
-			pizza = pizzaService.save(pizza);
+			Pizza pizzaCreated = pizzaService.save(pizza);
 
-			return new ResponseEntity<>(pizza, HttpStatus.OK);	
+			return new ResponseEntity<>(pizzaCreated, HttpStatus.OK);	
 		}
 	    
 	    @DeleteMapping("/pizze/delete/{id}")
