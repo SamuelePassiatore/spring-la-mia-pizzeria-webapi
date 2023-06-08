@@ -5,6 +5,7 @@ import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.JsonSetter;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -35,11 +36,10 @@ public class Pizza {
     
     private boolean deleted = false;
     
-    @JsonManagedReference
     @OneToMany(mappedBy = "pizza")
+    @JsonManagedReference
 	private List<SpecialOffer> specialOffers;
     
-    @JsonIgnore
 	@ManyToMany
 	private List<Ingredient> ingredients;
     
@@ -112,10 +112,11 @@ public class Pizza {
 		return ingredients;
 	}
 	
-	@JsonIgnore
 	public void setIngredients(List<Ingredient> ingredients) {
 		this.ingredients = ingredients;
 	}
+	
+	@JsonSetter
 	public void setIngredients(Ingredient[] ingredients) {
 		setIngredients(Arrays.asList(ingredients));
 	}
