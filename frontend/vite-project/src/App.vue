@@ -1,9 +1,11 @@
-<script setup>
-import HomePage from './components/HomePage.vue'
+<script>
+export default {
+  name: "Pizzeria",
+}
 </script>
 
 <template>
-  <HomePage />
+  <RouterView />
 </template>
 
 <style scoped></style>

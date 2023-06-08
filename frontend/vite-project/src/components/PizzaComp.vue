@@ -24,7 +24,7 @@ export default {
 
 <template>
     <li v-if="!deleted">
-        <span @click="open = !open">
+        <span @click="open = !open" role="button">
             {{ pizza.nome }} - {{ pizza.prezzo }}€
         </span>
         <button class="btn btn-small btn-danger ms-3" @click="deletePizza(pizza.id)">Elimina</button>
