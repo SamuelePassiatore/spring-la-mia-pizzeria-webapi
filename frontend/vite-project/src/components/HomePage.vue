@@ -7,6 +7,8 @@ export default {
   data() {
     return {
       pizze: [],
+      filtro: '',
+      pizzeFiltrate: []
     }
   },
   components: {
@@ -19,6 +21,15 @@ export default {
 
           const pizze = res.data;
           console.log(pizze);
+          if (this.filtro) {
+            this.pizzeFiltrate = pizze.filter(pizza => {
+
+              return pizza.nome.toLowerCase().includes(this.filtro.toLowerCase());
+            });
+          } else {
+            this.pizzeFiltrate = pizze;
+          }
+
           this.pizze = pizze;
         })
         .catch(err => console.log(err));
@@ -32,10 +43,13 @@ export default {
 </script>
 
 <template>
-  <div class="text-center">
+  <div class="d-flex flex-column align-items-center">
     <h1 class="p-2">Pizzeria</h1>
     <router-link to="/store" class="btn btn-small btn-success m-2">Crea una pizza</router-link>
-    <PizzaComp class="p-2" v-for="pizza in pizze" :pizza="pizza" />
+    <input type="text" v-model="filtro" placeholder="Filtra per nome" class="form-control m-2 w-50"
+      @keyup.enter="getPizze()">
+    <p v-if="pizzeFiltrate.length === 0" class="text-danger pt-4">Nessuna pizza trovata con questo nome.</p>
+    <PizzaComp class="p-2" v-for="pizza in pizzeFiltrate" :pizza="pizza" />
   </div>
 </template>
 
